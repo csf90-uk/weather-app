@@ -41,7 +41,7 @@ async function getWeather() {
 
     // Make API call
     const cityName = form.city.value
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&mode=JSON&units=metric`
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&mode=JSON&units=metric`
     console.log(apiUrl);
 
     try {
@@ -59,7 +59,7 @@ async function getWeather() {
             weatherText.textContent = apiResult.weather[0].main;
             
             const iconName = apiResult.weather[0].icon;
-            const iconUrl = `http://openweathermap.org/img/wn/${iconName}@4x.png`;
+            const iconUrl = `https://openweathermap.org/img/wn/${iconName}@4x.png`;
             weatherImage.src = iconUrl;
 
             const descriptionString = apiResult.weather[0].description + '.';
