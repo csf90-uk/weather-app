@@ -13,6 +13,7 @@ const descriptionText = document.getElementById('description');
 const humidityText = document.getElementById('humidity');
 const windText = document.getElementById('wind');
 const visibilityText = document.getElementById('visibility');
+const apiErrorText = document.getElementById('apiError');
 
 // API details
 const apiKey = 'e3c76a146e33202f763c9aa54ab83577'
@@ -52,33 +53,46 @@ async function getWeather() {
         // If we get a successful response code
         if (apiResponse.status >= 200 && apiResponse.status <= 299) {
 
-            // Set properties with formatting as applicable
-            datetimeText.textContent = new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" })
+            // Get time of searched city
+            const localDateTime = Math.floor((new Date()).getTime() / 1000) + apiResult.timezone;
+            console.log(localDateTime);
+            const localDateTimeConverted = new Date(localDateTime * 1000);
+            console.log(localDateTimeConverted.toUTCString());
+            datetimeText.textContent = localDateTimeConverted.toLocaleTimeString([], {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+
+
+            // Location and weather details
             locationText.textContent = apiResult.name + ', ' + apiResult.sys.country;
             temperatureText.textContent = Math.round(apiResult.main.temp) + '°C / ' + Math.round(apiResult.main.temp + 273.15) + 'K'
             weatherText.textContent = apiResult.weather[0].main;
             
+            // Icon for weather
             const iconName = apiResult.weather[0].icon;
             const iconUrl = `https://openweathermap.org/img/wn/${iconName}@4x.png`;
             weatherImage.src = iconUrl;
 
+            // Additional weather details
             const descriptionString = apiResult.weather[0].description + '.';
             descriptionText.textContent = 'Feels like ' + Math.round(apiResult.main.feels_like) + '°C. ' + descriptionString.charAt(0).toUpperCase() + descriptionString.substring(1);
             humidityText.textContent = 'Humidity: ' + apiResult.main.humidity + '%';
             windText.textContent = 'Wind Speed: ' + parseFloat(apiResult.wind.speed).toFixed(1) + 'm/s';
             visibilityText.textContent = 'Visibility: ' + (apiResult.visibility / 1000) + 'km';;
 
-            // Show results container
+            // Show results container and clear city input
             showResults();
+            form.reset();
 
         } else {
-            // Handle errors returned from API
+            // Display error returned from API
+            apiErrorText.textContent = apiResponse.status + ' - ' + apiResult.message;
             showError();
             console.log(apiResponse.status, apiResponse.statusText);
         }
 
     } catch (error) {
         // Handle errors if API fails completely
+        apiErrorText.textContent = 'We were unable to connect to the data provider. Please try again later.'
+        showError();
         console.log(error);
     }
 }

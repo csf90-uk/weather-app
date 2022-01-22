@@ -41,7 +41,7 @@ input {
 button {
     cursor: pointer;
     color: #fff;
-    background: #6C6CFF;
+    background: #EA6E4B;
     border: none;
     border-radius: 3px;
     outline: none;
@@ -50,7 +50,7 @@ button {
 
 button:hover {
     filter: brightness(95%);
-    background: #5C5CD9;
+    background: #EA6E4B;
 }
 
 button:focus {
@@ -59,7 +59,7 @@ button:focus {
 
 /* Loader */
 .loader {
-    margin-top: 50px;
+    margin-top: -60px;
     padding: 20px;
 }
 
@@ -79,6 +79,11 @@ button:focus {
 .results-summary {
     width: 400px;
     align-items: left;
+}
+
+.location {
+    color: #EA6E4B;
+    font-weight: bold;
 }
 
 .results-imagery {
@@ -102,6 +107,11 @@ button:focus {
     border-radius: 10px;
     box-shadow: 0 5px 10px 5px rgba(0,0,0,0.4);
     margin-top: 50px;
+}
+
+.apiError {
+    color: red;
+    font-style: italic;
 }
 
 /* Hidden */
