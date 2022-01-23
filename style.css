@@ -35,7 +35,10 @@ input {
     border: 1px solid black;
     border-radius: 3px;
     outline: none;
-    height: 1.2rem;
+    height: 1.6rem;
+    width: 250px;
+    font-size: 1rem;
+    padding-left: 5px; 
 }
 
 button {
@@ -45,7 +48,9 @@ button {
     border: none;
     border-radius: 3px;
     outline: none;
-    height: 1.4rem;
+    height: 1.9rem;
+    width: 80px;
+    font-size: 1rem;
 }
 
 button:hover {
