@@ -28,7 +28,7 @@ body {
 /* Search */
 .search-container {
     position: relative;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 input {
@@ -84,6 +84,11 @@ button:focus {
 .location {
     color: #EA6E4B;
     font-weight: bold;
+    font-size: 2.2rem;
+}
+
+.results-details {
+    line-height: 0.75rem;
 }
 
 .results-imagery {
@@ -114,9 +119,40 @@ button:focus {
     font-style: italic;
 }
 
+.footer {
+    position: fixed;
+    font-size: 0.75rem;
+    bottom: 25px;
+}
+
 /* Hidden */
 .hidden {
     display: none;
 }
 
-/* Media */
+/* Media - if screen is less than 700px, which is size of widget, make everything a bit smaller */
+@media screen and (max-width: 700px){
+    body{
+        font-size: 0.75rem;
+    }
+
+    .results-container {
+        width: 300px;
+        padding: 25px;
+        margin-top: 25px;
+    }
+
+    .location, .temperature {
+        font-size: 1rem;
+    }
+
+    .results-imagery {
+        width: auto;
+    }
+
+    .error-container {
+        width: 300px;
+        padding: 25px;
+        margin-top: 25px;
+    }
+}
