@@ -141,6 +141,18 @@ button:focus {
         font-size: 0.75rem;
     }
 
+    input {
+        height: 1.4rem;
+        width: 200px;
+        font-size: 0.8rem;
+    }
+    
+    button {
+        height: 1.6rem;
+        width: 80px;
+        font-size: 0.8rem;
+    }    
+
     .results-container {
         width: 300px;
         padding: 25px;
