@@ -1,3 +1,3 @@
 # weather-app
-Weather app for Monday.com interview process.
+Weather app that retrieves data for a given city from OpenWeather via API. Displayed in a simple web widget.
 Carl Fazekas, 2022.
